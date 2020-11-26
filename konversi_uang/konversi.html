@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<td colspan="3">konversi mata uang</td>
+	</tr>
+	<tr>
+		<td><input id="jumlah" type="number" onkeyup="Hitung()" name=""></td>
+		<td>
+			<select id="mata_uang" onchange="Hitung()">
+				<option value="9915">Dollar US</option>
+				<option value="13472">Dollar Singapore</option>
+				<option value="874">Ringgit Malaysia</option>
+				<option value="120">Yen Jepan</option>
+				<option value="15888">Euro</option>
+				<option value="3592">Riyal Arab Saud</option>
+			</select>
+		</td>
+		<td><input id="hasil" type="text" name="" readonly></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	function Hitung() {
+		let nilai = document.getElementById("jumlah").value;
+		let kurs = document.getElementById("mata_uang").value;
+		document.getElementById("hasil").value = nilai * kurs;
+	}
+</script>
+</body>
+</html>

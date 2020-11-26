@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<select id="img" onchange="Pilih()">
+		<option value="1">Ubur"</option>
+		<option value="2">Koala</option>
+		<option value="3">Pingwin</option>
+	</select>
+	<div id="hasil"></div>
+	<script type="text/javascript">
+		function Pilih() {
+		 let gambar = document.getElementById("img").value;
+		 gambar = "<img src='img/"+gambar+".jpg'>";
+		 document.getElementById("hasil").innerHTML = gambar;
+		}
+		Pilih()
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<form action="/" id="form" method="GET"></form>
+	<table>
+		<tr>
+			<td>Nama Pelanggan :</td>
+			<td><input id="nama" type="text" name="nama" maxlength="30" required></td>
+		</tr>
+		<tr>
+			<td>Email:</td>
+			<td><input id="email" type="text" name="email" required></td>
+		</tr>
+		<tr>
+			<td>Jam Keberangkatan :</td>
+			<td><input id="jam1" type="time" name="" required> - <input id="jam2" type="time" name="" required></td>
+		</tr>
+		<tr>
+			<td>Tujuan Keberangkatan :</td>
+			<td><input id="tujuan" type="text" required><br></td>
+		</tr>
+		<tr>
+			<td>Jumlah Tiket :</td>
+			<td><select name="jml_tiket" id="jml_tiket"></select></td>
+		</tr>
+	</table>
+	<button type="button" onclick="chek()" id="submit">Kirim</button>
+	</form>
+	<div id="nama_view"></div>
+	<div id="email_view"></div>
+	<div id="jam_view"></div>
+	<div id="tujuan_view"></div>
+	<div id="tiket_view"></div>
+	<div id="err" style="color: red;"></div>
+	<script type="text/javascript">
+		var option = "";
+		var i = 1;
+		for (i = 1; i <= 10; i++) {
+			option += "<option value='" + i + "'>" + i + "</option>";
+		}
+		document.getElementById("jml_tiket").innerHTML = option;
+		function chek() {
+	
+			let nama = document.getElementById("nama").value;
+			let email = document.getElementById("email").value;
+			let jam1 = document.getElementById("jam1").value;
+			let jam2 = document.getElementById("jam2").value;
+			let tujuan = document.getElementById("tujuan").value;
+			let jml_tiket = document.getElementById("jml_tiket").value;
+			let err = document.getElementById("err");
+			var mail1 = email.indexOf("@");
+			var mail2 = email.lastIndexOf(".");
+
+			err.innerHTML ="";
+			document.getElementById("nama_view").innerHTML = "";
+			document.getElementById("email_view").innerHTML = "";
+			document.getElementById("jam_view").innerHTML = "";
+			document.getElementById("tujuan_view").innerHTML = "";
+			document.getElementById("tiket_view").innerHTML = "";
+			
+			let messages = []
+			if (nama.length >= 30 || nama == null || nama == "") {
+				messages.push("Nama tidak valid");
+			}
+			if (mail1 < 1 || mail2 < mail1 + 2 || mail2 + 2 >= email.length) {
+				messages.push("Email tidak valid contoh index@gmail.com");
+			}
+			if (jam1 == null || jam1 == "" || jam2 == null || jam2 == "") {
+				messages.push("jam tidak valid");
+			}
+			if (messages.length > 0) {
+				err.innerHTML = messages.join('<br>');
+				return;
+			}
+			
+			let Dnama = document.getElementById("nama_view").innerHTML;
+			Vnama = Dnama + "Nama :" + nama + "<br>";
+			document.getElementById("nama_view").innerHTML = Vnama;
+
+			let Dmail = document.getElementById("email_view").innerHTML;
+			Vmail = Dmail +"Email :"+ email + "<br>";
+			document.getElementById("email_view").innerHTML = Vmail;
+
+			let Ddate = document.getElementById("jam_view").innerHTML;
+			Vdate = Ddate +"Jam Keberangkatan :"+ jam1 + "-"+jam2+"<br>";
+			document.getElementById("jam_view").innerHTML = Vdate
+
+			let Dtujuan = document.getElementById("tujuan_view").innerHTML;
+			Vtujuan = Dtujuan +"Tujuan :"+ tujuan + "<br>";
+			document.getElementById("tujuan_view").innerHTML = Vtujuan
+
+			let Dtiket = document.getElementById("tiket_view").innerHTML;
+			Vtiket = Dtiket +"jumlah Tiket :"+ jml_tiket + "<br>";
+			document.getElementById("tiket_view").innerHTML = Vtiket
+		}
+	</script>
+</body>
+
+</html>
